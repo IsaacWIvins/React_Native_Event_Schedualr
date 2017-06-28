@@ -40,16 +40,17 @@ export default class Schedule extends React.Component {
 
   renderItems = ({item}) => {
     return (
-      <View>
-        <Text>{item.title}</Text>
+      <View style={styles.row}>
+        <Text style={styles.rowTitle}>{item.title}</Text>
+        <Text style={styles.rowSpeaker}>{item.speaker}</Text>
       </View>
     )
   };
 
   renderSectionHeader = ({ section }) => {
     return (
-      <View>
-        <Text>{section.title}</Text>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionHeaderText}>{section.key}</Text>
       </View>
     )
   };
@@ -71,7 +72,7 @@ export default class Schedule extends React.Component {
         </Image>
         <SectionList
           style={styles.list}
-          sections={thusdaySections}
+          sections={selectedDay === 'THURSDAY' ? thusdaySections : fridaySections}
           renderItem={this.renderItems}
           renderSectionHeader={this.renderSectionHeader}
         />
@@ -94,6 +95,26 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
+  },
+  sectionHeader: {
+    backgroundColor: 'whitesmoke',
+    padding: 20,
+  },
+  sectionHeaderText: {
+    fontSize: 13,
+  },
+  row: {
+    backgroundColor: 'rgb(91, 113, 124)',
+    padding: 20,
+  },
+  rowTitle: {
+    fontSize: 13,
+    fontWeight: '500',
+    color: 'white',
+  },
+  rowSpeaker: {
+    fontSize: 23,
+    color: 'white',
   },
   logo: {
     width: 60,
