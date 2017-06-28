@@ -1,6 +1,30 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, SectionList } from 'react-native';
 import ToggleButton from '../components/toggleButton';
+
+const thusdaySections = [
+  {
+    key: '8:30 AM',
+    data: [{ key: 0, title: "Breakfast and Relaxation" }]
+  },
+  {
+    key: '9:30 AM',
+    data: [{ key: 0, title: "Start saving the world presentation", speaker: "Batman" }]
+  }
+];
+
+const fridaySections = [
+  {
+    key: '7:30 AM',
+    data: [{ key: 0, title: "Relaxation and Breakfast" }]
+  },
+  {
+    key: '8:30 AM',
+    data: [{
+      key: 0, title: "How to save the world", speaker: "Superman"
+    }]
+  }
+];
 
 export default class Schedule extends React.Component {
 
@@ -12,7 +36,23 @@ export default class Schedule extends React.Component {
     this.setState({
       selectedDay: item
     })
-  }
+  };
+
+  renderItems = ({item}) => {
+    return (
+      <View>
+        <Text>{item.title}</Text>
+      </View>
+    )
+  };
+
+  renderSectionHeader = ({ section }) => {
+    return (
+      <View>
+        <Text>{section.title}</Text>
+      </View>
+    )
+  };
 
   render() {
 
@@ -29,6 +69,12 @@ export default class Schedule extends React.Component {
             onPressItem={this.handlePressedItem}
           />
         </Image>
+        <SectionList
+          style={styles.list}
+          sections={thusdaySections}
+          renderItem={this.renderItems}
+          renderSectionHeader={this.renderSectionHeader}
+        />
       </View>
     );
   }
@@ -40,10 +86,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   images: {
-    height: 180,
+    paddingVertical: 30,
+    height: null,
     width: null,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  list: {
+    flex: 1,
   },
   logo: {
     width: 60,
@@ -53,6 +103,7 @@ const styles = StyleSheet.create({
   title: {
     backgroundColor: 'transparent',
     color: 'white',
-    fontSize: 24
+    fontSize: 29,
+    marginBottom: 13
   }
 });
