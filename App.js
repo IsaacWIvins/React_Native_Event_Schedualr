@@ -4,11 +4,20 @@ import EventDetails from './screens/eventDetails';
 import Schedule from './screens/Schedule';
 import Feedback from './screens/feedback';
 
+import { StackNavigator } from 'react-navigation';
+
+const ScheduleStack = StackNavigator ({
+  ScheduleList: { screen: Schedule },
+  DetailsList: { screen: EventDetails }
+}, {
+  headerMode: 'screen'
+});
+
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Feedback />
+        <ScheduleStack />
       </View>
     );
   }
