@@ -1,6 +1,6 @@
 import React from 'react';
 import { Constants } from 'expo';
-import { Slider, TextInput, StatusBar, ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { Slider, TextInput, StatusBar, ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import GrowingTextInput from '../components/growingInput';
 
 export default class Feedback extends React.Component {
@@ -11,6 +11,10 @@ export default class Feedback extends React.Component {
 
   state = {
     value: 0,
+  }
+
+  _handlePress = () => {
+    this.props.navigation.navigate('AnimatedHeader')
   }
 
   render() {
@@ -79,7 +83,12 @@ export default class Feedback extends React.Component {
             onValueChange={value => this.setState({value})}
           />
 
+          <TouchableOpacity
+            onPress={this._handlePress}>
+            <Text>Touch Me TO See Header Animated</Text>
+          </TouchableOpacity>
         </ScrollView>
+
 
         <StatusBar barStyle="light-content" />
       </View>

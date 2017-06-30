@@ -2,9 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class EventDetails extends React.Component {
-
   static navigationOptions = {
-    title: 'Event Details',
+    title: 'EventDetails',
   }
   render() {
     let { item } = this.props.navigation.state.params;
