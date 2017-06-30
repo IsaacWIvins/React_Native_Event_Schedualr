@@ -2,13 +2,19 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default class EventDetails extends React.Component {
+
+  static navigationOptions = {
+    title: 'Event Details',
+  }
   render() {
+    let { item } = this.props.navigation.state.params;
+    console.log({item})
     return (
       <View style={styles.container}>
         <View style={styles.detailsContainer}>
-          <Text style={styles.title}>Conference Keynote</Text>
-          <Text style={styles.subtitle}>Thursday, May 18</Text>
-          <Text style={styles.description}>Hear about awesome stuff</Text>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.subtitle}></Text>
+          <Text style={styles.description}>{item.description}</Text>
         </View>
         <View style={styles.speakerContainer}>
             <Image style={styles.image} source={require('../assets/icons/rdb.png')} />

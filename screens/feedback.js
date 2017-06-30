@@ -5,6 +5,10 @@ import GrowingTextInput from '../components/growingInput';
 
 export default class Feedback extends React.Component {
 
+  static navigationOptions = {
+    title: 'Feedback',
+  }
+
   state = {
     value: 0,
   }
@@ -14,7 +18,7 @@ export default class Feedback extends React.Component {
       <View style={{flex: 1}}>
         <ScrollView
           keyboardDismissMode="on-drag"
-          contentContainerStyle={{paddingTop: 65}}
+          contentContainerStyle={{paddingTop: 30}}
           style={{flex: 1, backgroundColor: 'whitesmoke', paddingHorizontal: 10}}>
 
           <Text style={styles.formTitle}>Contact Info: </Text>
@@ -77,10 +81,6 @@ export default class Feedback extends React.Component {
 
         </ScrollView>
 
-        <View style={styles.navbar}>
-          <Text style={styles.titleText}>Feedback</Text>
-        </View>
-
         <StatusBar barStyle="light-content" />
       </View>
     );
@@ -90,17 +90,6 @@ export default class Feedback extends React.Component {
 const styles = StyleSheet.create({
   container: {
 
-  },
-  navbar: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 65,
-    backgroundColor: 'rgb(45, 104, 200)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
   },
   titleText: {
     fontSize: 18,
